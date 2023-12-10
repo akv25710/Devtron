@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	log "github.com/sirupsen/logrus"
+	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 	"io"
 	"os"
@@ -51,7 +52,7 @@ func DownloadFolder(bucketName, folderPath, destinationPath string) error {
 			break
 		}
 		if err != nil {
-			log.Errorf(err)
+			log.Errorf(err.Error())
 			return err
 		}
 

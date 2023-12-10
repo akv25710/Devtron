@@ -1,8 +1,9 @@
 package apis
 
 import (
-	"lfetchogger/conf"
-	"lfetchogger/services/logger_service"
+	"fetchlogger/conf"
+	"fetchlogger/services/logger_service"
+	"github.com/labstack/echo/v4"
 )
 
 type Route struct {

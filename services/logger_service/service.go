@@ -1,7 +1,7 @@
 package logger_service
 
 import (
-	"lfetchogger/conf"
+	"fetchlogger/conf"
 	"time"
 )
 

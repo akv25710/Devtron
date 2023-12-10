@@ -2,8 +2,8 @@ package logger_service
 
 import (
 	"bufio"
+	"fetchlogger/core/gcp"
 	"fmt"
-	"lfetchogger/core/gcp"
 	"os"
 	"strings"
 	"time"

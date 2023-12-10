@@ -2,12 +2,14 @@ package fetchlogger
 
 import (
 	"fmt"
+
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"
-	"lfetchogger/apis"
-	"lfetchogger/conf"
-	"lfetchogger/middleware"
-	"lfetchogger/services/logger_service"
+
+	"fetchlogger/apis"
+	"fetchlogger/conf"
+	"fetchlogger/middleware"
+	"fetchlogger/services/logger_service"
 )
 
 func main() {

@@ -1,9 +1,9 @@
 package conf
 
 import (
+	"fetchlogger/services/logger_service"
 	"github.com/ilyakaznacheev/cleanenv"
 	"github.com/sirupsen/logrus"
-	"lfetchogger/services/logger_service"
 	"os"
 )
 

@@ -1,4 +1,4 @@
-module lfetchogger
+module fetchlogger
 
 go 1.19
 
