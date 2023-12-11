@@ -16,23 +16,23 @@ type GCPLogger struct {
 
 func (g GCPLogger) SearchLogs(text string, start, end time.Time) ([]string, error) {
 	folders := GetLogDirectories(start, end)
+	path := "/tmp"
 
-	err := g.DownloadFolders(folders, "/tmp")
+	err := g.DownloadFolders(folders, path)
 	if err != nil {
 		return nil, err
 	}
 
-	return g.searchFiles(text, folders), nil
+	files := GetLogFiles(path, folders, start, end)
+
+	return g.searchFiles(text, files), nil
 }
 
-func (g GCPLogger) searchFiles(text string, folders []string) []string {
+func (g GCPLogger) searchFiles(text string, files []string) []string {
 	var result []string
 
-	for _, folder := range folders {
-		for i := 0; i < 24; i++ {
-			dest := fmt.Sprintf("/tmp/%s/%02d.txt", folder, i)
-			result = append(result, g.searchFile(text, dest)...)
-		}
+	for _, file := range files {
+		result = append(result, g.searchFile(text, file)...)
 	}
 
 	return result

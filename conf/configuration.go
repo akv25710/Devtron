@@ -1,7 +1,6 @@
 package conf
 
 import (
-	"fetchlogger/services/logger_service"
 	"github.com/ilyakaznacheev/cleanenv"
 	"github.com/sirupsen/logrus"
 	"os"
@@ -17,7 +16,7 @@ type ServerConfiguration struct {
 }
 
 type LoggerConfiguration struct {
-	Cloud  logger_service.CloudProvider
+	Cloud  string
 	Bucket string
 }
 

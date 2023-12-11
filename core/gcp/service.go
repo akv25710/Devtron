@@ -3,6 +3,7 @@ package gcp
 import (
 	"cloud.google.com/go/storage"
 	"context"
+	"errors"
 	"fmt"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/api/iterator"
@@ -24,7 +25,7 @@ func init() {
 	storageClientKeyFile := os.Getenv("STORAGE_CLIENT_KEY")
 	if storageClientKeyFile == "" {
 		log.Error("[ERROR] STORAGE_CLIENT_KEY not provided")
-		os.Exit(1)
+		//os.Exit(1)
 	}
 
 	ctx = context.Background()
@@ -48,7 +49,7 @@ func DownloadFolder(bucketName, folderPath, destinationPath string) error {
 
 	for {
 		objAttrs, err := objects.Next()
-		if err == iterator.Done {
+		if errors.Is(err, iterator.Done) {
 			break
 		}
 		if err != nil {

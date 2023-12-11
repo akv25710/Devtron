@@ -1,4 +1,4 @@
-package fetchlogger
+package main
 
 import (
 	"fmt"

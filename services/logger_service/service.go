@@ -13,8 +13,17 @@ type LoggerService struct {
 type CloudProvider string
 
 const (
-	GCP CloudProvider = "gcp"
+	GCP     CloudProvider = "gcp"
+	Unknown CloudProvider = "unknown"
 )
+
+func ParseCloudType(cloud string) CloudProvider {
+	if cloud == string(GCP) {
+		return GCP
+	}
+
+	return Unknown
+}
 
 func getCloudLogger(cloud CloudProvider) CloudLoggerInterface {
 	if cloud == GCP {
@@ -25,7 +34,7 @@ func getCloudLogger(cloud CloudProvider) CloudLoggerInterface {
 }
 
 func InitLoggerService(conf conf.LoggerConfiguration) LoggerService {
-	cloud := getCloudLogger(conf.Cloud)
+	cloud := getCloudLogger(ParseCloudType(conf.Cloud))
 
 	return LoggerService{
 		CloudService: cloud,
